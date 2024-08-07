@@ -1,0 +1,25 @@
+<div class="container">
+
+  <div class="row text-center justify-content-center">
+    <h1 class="m-5">Restaurant details</h1>
+    <div class="col-6 card p-4 m-3" style="width: 18rem;">
+      <img class="card-img-top" src="/app/assets/images/image.jpg" alt="Restaurant image">
+      <div class="card-body">
+        <h5 class="card-title"><%= @restaurant.name %></h5>
+        <p class="card-text">Address: <%= @restaurant.address %></p>
+        <p class="card-text">Category: <%= @restaurant.category %></p>
+        <div>
+          <%= link_to 'Back to home', root_path, class:'btn btn-dark' %>
+          <%= link_to 'Write a review',  new_restaurant_review_path(@restaurant),class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 card p-4">
+      <% @restaurant.reviews.each do |review| %>
+        <p>Rating: <%= review.rating %>/5<br></p>
+        <p>Review: <%= review.content %><br></p>
+        <%= '*' * 80 %><br><br>
+      <% end %>
+    </div>
+  </div>
+</div>
